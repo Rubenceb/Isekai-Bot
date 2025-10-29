@@ -2,6 +2,16 @@ import discord
 from discord.ext import commands
 import os
 import asyncio
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
+
+# Check for Discord token
+if not os.getenv("DISCORD_TOKEN"):
+    print("❌ ERROR: DISCORD_TOKEN environment variable not set!")
+    print("Please add your Discord bot token to the .env file.")
+    exit(1)
 
 intents = discord.Intents.default()
 intents.message_content = True
